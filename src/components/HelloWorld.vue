@@ -88,6 +88,9 @@
 
 <script>
 import obtenerEmpleado from "@/helpers/procesarEmpleado";
+import eliminarEmpleado from "@/helpers/procesarEmpleado";
+import insertarEmpleado from "@/helpers/procesarEmpleado";
+import actualizarEmpleado from "@/helpers/procesarEmpleado";
 
 export default {
   name: "HelloWorld",
@@ -96,12 +99,31 @@ export default {
   },
   methods: {
     async buscar(id) {
-      await obtenerEmpleado(id)
+      await obtenerEmpleado(id);
+    },
+    async eliminar(id) {
+      await eliminarEmpleado(id);
+    },
+    async insertar(body) {
+      await insertarEmpleado(body);
+    },
+    async actualizar(body) {
+      await actualizarEmpleado(body);
     },
   },
-  mounted(){
+  mounted() {
     this.buscar(1);
-  }
+    this.eliminar(3);
+    const empl = {
+      id: 3,
+      nombre: "Armando",
+      apellido: "Paredes",
+      fechaNacimiento: "2010-06-17T00:00:00",
+      salario: 200,
+    };
+    this.insertar(empl);
+    this.actualizar(empl);
+  },
 };
 </script>
 
