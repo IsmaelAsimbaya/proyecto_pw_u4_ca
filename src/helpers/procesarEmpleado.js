@@ -1,20 +1,20 @@
 import axios from 'axios'
 
 //Metodos Fachada a exportar
-const obtenerEmpleado = async (id) => {
+export const obtenerEmpleado = async (id) => {
     //return await obtenerEmpleadoAPI(id);
     return await getEmpleadoAXIOS(id);
 }
 
-const insertarEmpleado = async (body) => {
+export const insertarEmpleado = async (body) => {
     return await postEmpleadoAXIOS(body);
 }
 
-const actualizarEmpleado = async (body) => {
+export const actualizarEmpleado = async (body) => {
     return await putEmpleadoAXIOS(body);
 }
 
-const eliminarEmpleado = async (id) => {
+export const eliminarEmpleado = async (id) => {
     return await deleteEmpleadoAXIOS(id);
 }
 
@@ -42,7 +42,7 @@ const postEmpleadoAXIOS = async (body1) => {
 
 //PUT
 const putEmpleadoAXIOS = async (body) => {
-    const data = axios.put(`http://localhost:8085/API/Nomina/V1/empleados`, body, cabecera).then(r => r.data)
+    const data = axios.put(`http://localhost:8085/API/Nomina/V1/empleados`, body).then(r => r.data)
     console.log(data)
     return data
 }
@@ -54,7 +54,4 @@ const deleteEmpleadoAXIOS = async (id) => {
     return data
 }
 
-export default obtenerEmpleado;
-eliminarEmpleado;
-insertarEmpleado;
-actualizarEmpleado;
+//export default obtenerEmpleado;eliminarEmpleado;insertarEmpleado;actualizarEmpleado;
